@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/11 16:48:09 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:37:09 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <time.h>
+# include <stdbool.h>
 # include <unistd.h>
 
 typedef struct s_rules
@@ -37,8 +38,10 @@ typedef struct s_tab
 typedef struct t_philo
 {
     pthread_t       th;
+    t_rules         *rules;
+    t_tab           *tab;
 	int				id;
-	int				cur_die;
+	bool			am_i_dead_wtf_bro;
 	int				cur_eat;
 	int				cur_sleep;
 }					t_philo;

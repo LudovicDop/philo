@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/11 17:24:04 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:38:28 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 		pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
 			&(*philo)[i]);
 		(*philo)[i].id = i + 1;
+        (*philo)[i].rules = *rules;
+        (*philo)[i].tab = *tab;
 		i++;
 	}
 	i = 0;

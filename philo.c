@@ -6,11 +6,27 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/11 16:47:51 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:39:53 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void    i_m_eating(t_philo *tmp)
+{
+    printf("time_to_eat : %d\n", tmp->rules->time_to_eat);
+    usleep(tmp->rules->time_to_eat);
+}
+
+void    i_m_sleeping(t_philo *tmp)
+{
+
+}
+
+void    i_m_thinking_about_my_fucking_life(t_philo *tmp)
+{
+    
+}
 
 void	*philosophers(void *arg)
 {
@@ -18,4 +34,5 @@ void	*philosophers(void *arg)
 
 	tmp = (t_philo *)arg;
 	printf("Hello %d\n", tmp->id);
+    i_m_eating(tmp);
 }

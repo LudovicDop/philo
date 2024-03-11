@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/11 12:01:53 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/11 14:56:25 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_tab
 
 typedef struct t_philo
 {
+    pthread_t       th;
 	int				id;
 	int				cur_die;
 	int				cur_eat;
@@ -46,5 +47,9 @@ typedef struct t_philo
 int					ft_atoi(const char *str);
 
 /*philo function*/
-
+int					malloc_struct(t_tab **tab, t_philo **philo,
+						t_rules **rules, char **argv);
+int					init_philo(t_tab **tab, t_philo **philo, t_rules **rules,
+						char **argv);
+long long getCurrentTimeMillis();
 #endif

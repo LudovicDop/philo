@@ -6,9 +6,11 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:31:12 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/11 12:01:56 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/11 14:21:11 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "philo.h"
 
 int	ft_atoi(const char *str)
 {
@@ -33,4 +35,11 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (ret * is_neg);
+}
+
+long long getCurrentTimeMillis() {
+    struct timeval currentTime;
+    gettimeofday(&currentTime, NULL);
+
+    return (currentTime.tv_sec * 1000 + currentTime.tv_usec / 1000);
 }

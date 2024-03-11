@@ -1,6 +1,6 @@
 SRC = main.c utils.c
 #CC = gcc -Wall -Werror -Wextra
-CC = gcc
+CC = gcc -g3
 OBJ = $(SRC:.c=.o)
 NAME = philo
 

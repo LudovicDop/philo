@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/11 14:57:52 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:46:05 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	malloc_struct(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 		printf("Not enought philosophers!\n");
 		return (free(*tab), 1);
 	}
+    printf("Fork : %d\n", (*tab)->fork);
 	*philo = malloc(sizeof(t_philo) * (*tab)->fork);
 	if (!(*philo))
 		return (2);
@@ -43,17 +44,17 @@ int	init_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
     i = 0;
 	if (malloc_struct(tab, philo, rules, argv))
 		return (2);
-	// while (i < (*tab)->fork)
-    // {
-    //     pthread_create(&(*philo)->th, NULL, (void*)f1, NULL);
-    //     i++;
-    // }
-    // i = 0;
-    // while (i < (*tab)->fork)
-    // {
-    //     pthread_join(&(*philo)->th, NULL);
-    //     i++;
-    // }
+	while (i < (*tab)->fork)
+    {
+        pthread_create(&(*philo)[i].th, NULL, (void*)f1, NULL);
+        i++;
+    }
+    i = 0;
+    while (i < (*tab)->fork)
+    {
+        pthread_join((*philo)[i].th, NULL);
+        i++;
+    }
 	return (0);
 }
 

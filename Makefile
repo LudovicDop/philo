@@ -1,4 +1,4 @@
-SRC = main.c utils.c
+SRC = main.c utils.c init.c philo.c
 #CC = gcc -Wall -Werror -Wextra
 CC = gcc -g3
 OBJ = $(SRC:.c=.o)

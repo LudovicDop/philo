@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/11 16:25:36 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:48:09 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,5 @@ int					malloc_struct(t_tab **tab, t_philo **philo,
 int					init_philo(t_tab **tab, t_philo **philo, t_rules **rules,
 						char **argv);
 long long getCurrentTimeMillis();
+void	*philosophers(void *arg);
 #endif

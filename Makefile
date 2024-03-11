@@ -1,4 +1,4 @@
-SRC = main.c
+SRC = main.c utils.c
 #CC = gcc -Wall -Werror -Wextra
 CC = gcc
 OBJ = $(SRC:.c=.o)

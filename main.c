@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/11 11:57:08 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/11 12:02:05 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,17 @@ int	init_philo(t_tab **tab, char **argv)
 		return (free(*tab), 1);
 	}
 	printf("OK\n");
-    return (0);
+	return (0);
 }
+
 int	main(int argc, char **argv)
 {
 	t_tab	*tab;
 
 	if (argc == 6)
 	{
-        if(init_philo(&tab, argv))
-            return (1);
+		if (init_philo(&tab, argv))
+			return (1);
 	}
 	else
 	{

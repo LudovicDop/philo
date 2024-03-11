@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/11 15:46:05 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:38:14 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ int	malloc_struct(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 	return (0);
 }
 
-void    *f1(void)
+void    *philosophers(void *arg)
 {
-    printf("Hello\n");
+    t_philo *tmp;
+
+    tmp = (t_philo*)arg;
+    printf("Hello %d\n",tmp->id);
 }
 int	init_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 {
@@ -46,7 +49,8 @@ int	init_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 		return (2);
 	while (i < (*tab)->fork)
     {
-        pthread_create(&(*philo)[i].th, NULL, (void*)f1, NULL);
+        pthread_create(&(*philo)[i].th, NULL, (void*)philosophers, &(*philo)[i]);
+        (*philo)[i].id = i;
         i++;
     }
     i = 0;

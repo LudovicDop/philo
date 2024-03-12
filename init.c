@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:45:32 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/12 12:49:15 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:33:02 by ludovicdopp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ int	init_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
     (*rules)->time_to_eat = ft_atoi(argv[3]);
     (*rules)->time_to_sleep = ft_atoi(argv[4]);
     pthread_mutex_init(&(*tab)->mutex, NULL);
-	(*tab)->fork = getCurrentTimeMillis();
+	(*tab)->global_time = getCurrentTimeMillis();
 	return (0);
 }

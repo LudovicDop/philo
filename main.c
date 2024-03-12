@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/11 17:38:28 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:32:37 by ludovicdopp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 	long long	startTime;
 	long long	endTime;
 
-	startTime = getCurrentTimeMillis();
+	//startTime = getCurrentTimeMillis();
 	if (argc == 6)
 	{
 		if (init_philo(&tab, &philo, &rules, argv))
@@ -51,10 +51,11 @@ int	main(int argc, char **argv)
 	else
 	{
 		printf("Look like there is not enough arguments!\n");
+		return (1);
 	}
     start_philo(&tab, &philo, &rules, argv);
 	free(tab);
-	endTime = getCurrentTimeMillis() - startTime;
-	printf("Mili : %lld mili\n", endTime);
+	//endTime = getCurrentTimeMillis() - startTime;
+	//printf("default time : %lld\n", endTime);
 	return (0);
 }

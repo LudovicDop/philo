@@ -45,4 +45,5 @@ int	init_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
     (*rules)->time_to_sleep = ft_atoi(argv[4]);
     pthread_mutex_init(&(*tab)->mutex, NULL);
 	(*tab)->global_time = getCurrentTimeMillis();
-	return 
+	return (0);
+}

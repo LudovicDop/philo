@@ -6,7 +6,7 @@
 /*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/12 13:32:37 by ludovicdopp      ###   ########.fr       */
+/*   Updated: 2024/03/12 13:52:29 by ludovicdopp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,6 @@ int	main(int argc, char **argv)
     start_philo(&tab, &philo, &rules, argv);
 	free(tab);
 	//endTime = getCurrentTimeMillis() - startTime;
-	//printf("default time : %lld\n", en
+	//printf("default time : %lld\n", endTime);
+	return (0);
+}

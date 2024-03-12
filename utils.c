@@ -48,4 +48,6 @@ long long get_time(long long start_time)
 {
 	long long ret;
 
-	ret = getCurrentTimeMillis() - 
+	ret = getCurrentTimeMillis() - start_time;
+	return (ret);
+}

@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:31:12 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/11 14:21:11 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/12 12:51:39 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,9 @@ long long getCurrentTimeMillis() {
     gettimeofday(&currentTime, NULL);
 
     return (currentTime.tv_sec * 1000 + currentTime.tv_usec / 1000);
+}
+
+long long get_time(long long start_time)
+{
+	return (start_time - getCurrentTimeMillis());
 }

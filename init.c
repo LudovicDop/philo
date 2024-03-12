@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:45:32 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/11 17:47:25 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/12 12:49:15 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	malloc_struct(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 
 int	init_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 {
+	long long	startTime;
+
 	if (malloc_struct(tab, philo, rules, argv))
 		return (2);
     (*rules)->nbre_philo = (*tab)->fork;
@@ -42,5 +44,6 @@ int	init_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
     (*rules)->time_to_eat = ft_atoi(argv[3]);
     (*rules)->time_to_sleep = ft_atoi(argv[4]);
     pthread_mutex_init(&(*tab)->mutex, NULL);
+	(*tab)->fork = getCurrentTimeMillis();
 	return (0);
 }

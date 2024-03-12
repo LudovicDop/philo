@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/11 17:53:50 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/12 12:52:26 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void    i_m_eating(t_philo *tmp)
 {
    
     pthread_mutex_lock(&(tmp)->tab->mutex);
-    printf("time_to_eat : %d\n", tmp->rules->time_to_eat);
-     sleep(2);
+    printf("%d %d is eating\n", get_time((tmp)->tab->global_time));
     usleep(tmp->rules->time_to_eat);
     pthread_mutex_unlock(&tmp->tab->mutex);
 }

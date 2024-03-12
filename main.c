@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
+/*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/12 13:52:29 by ludovicdopp      ###   ########.fr       */
+/*   Updated: 2024/03/12 14:12:00 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 	i = 0;
 	while (i < (*tab)->fork)
 	{
-		pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
-			&(*philo)[i]);
 		(*philo)[i].id = i + 1;
         (*philo)[i].rules = *rules;
         (*philo)[i].tab = *tab;
+		pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
+			&(*philo)[i]);
 		i++;
 	}
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:31:12 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/12 13:37:29 by ludovicdopp      ###   ########.fr       */
+/*   Updated: 2024/03/12 13:44:17 by ludovicdopp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,4 @@ long long get_time(long long start_time)
 {
 	long long ret;
 
-	ret = getCurrentTimeMillis() - start_time;
-	return (ret);
-}
+	ret = getCurrentTimeMillis() - 

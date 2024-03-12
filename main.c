@@ -56,6 +56,4 @@ int	main(int argc, char **argv)
     start_philo(&tab, &philo, &rules, argv);
 	free(tab);
 	//endTime = getCurrentTimeMillis() - startTime;
-	//printf("default time : %lld\n", endTime);
-	return (0);
-}
+	//printf("default time : %lld\n", en

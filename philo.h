@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/12 15:03:35 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:30:52 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ typedef struct t_philo
 	bool			am_i_dead_wtf_bro;
 	int				cur_eat;
 	int				cur_sleep;
-	bool			fork;
+	pthread_mutex_t			fork;
+	pthread_mutex_t			right_fork;
 }					t_philo;
 
 /*utils function*/

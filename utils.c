@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
+/*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:31:12 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/12 13:44:17 by ludovicdopp      ###   ########.fr       */
+/*   Updated: 2024/03/14 16:47:05 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,33 @@ int	ft_atoi(const char *str)
 	return (ret * is_neg);
 }
 
+// long long getCurrentTimeMillis() {
+//     struct timeval currentTime;
+//     gettimeofday(&currentTime, NULL);
+
+//     return (currentTime.tv_sec * 1000 + currentTime.tv_usec / 1000);
+// }
+
+// long long get_time(long long start_time)
+// {
+// 	long long ret;
+
+// 	ret = getCurrentTimeMillis() - start_time;
+// 	return (ret);
+// }
+
+#include <sys/time.h>
+
 long long getCurrentTimeMillis() {
     struct timeval currentTime;
     gettimeofday(&currentTime, NULL);
 
-    return (currentTime.tv_sec * 1000 + currentTime.tv_usec / 1000);
+    return (currentTime.tv_sec * 1000LL + currentTime.tv_usec / 1000LL);
 }
 
-long long get_time(long long start_time)
-{
-	long long ret;
-
-	ret = getCurrentTimeMillis() - start_time;
-	return (ret);
+long long get_time(long long startTime) {
+    return getCurrentTimeMillis() - startTime;
 }
+
+
+

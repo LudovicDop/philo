@@ -6,11 +6,33 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/13 16:29:36 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/14 16:29:32 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	init_fork(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
+{
+	int	i;
+
+	i = 0;
+	printf("Begin init_fork!\n");
+	while (i < (*tab)->fork)
+	{
+		if (((*philo)[i].id % 2 == 0) || (*philo)[i].id == (*tab)->fork)
+		{
+			// pthread_mutex_init(&(*philo)[i].fork, NULL);
+			// pthread_mutex_lock(&(*philo)[i].fork);
+			printf("ID Philo : %d\n", (*philo)[i].id);
+		}
+		i++;
+	}
+	// pthread_mutex_init(&(*philo)[i].fork, NULL);
+	// pthread_mutex_init(&(*philo)[1].fork, NULL);
+	// pthread_mutex_lock(&(*philo)[i].fork);
+    // pthread_mutex_lock(&(*philo)[1].fork);
+}
 
 void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 {
@@ -19,10 +41,7 @@ void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 
 	repeat = ft_atoi(argv[5]);
 	i = 0;
-	pthread_mutex_init(&(*philo)[i].fork, NULL);
-	pthread_mutex_init(&(*philo)[1].fork, NULL);
-	pthread_mutex_lock(&(*philo)[i].fork);
-    pthread_mutex_lock(&(*philo)[1].fork);
+
 	while (i < (*tab)->fork)
 	{
 		(*philo)[i].id = i + 1;
@@ -32,6 +51,7 @@ void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 			&(*philo)[i]);
 		i++;
 	}
+	init_fork(tab, philo, rules, argv);
 	i = 0;
 	while (i < (*tab)->fork)
 	{

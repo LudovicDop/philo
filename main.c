@@ -6,7 +6,7 @@
 /*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/16 16:00:36 by ludovicdopp      ###   ########.fr       */
+/*   Updated: 2024/03/16 17:53:40 by ludovicdopp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 		{
 			pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
 		 	&(*philo)[i]);
-			//printf("ID Philo : %d\n", (*philo)[i].id);
+			printf("First loop ID Philo : %d\n", (*philo)[i].id);
 		}
 		i++;
 	}
@@ -68,7 +68,7 @@ void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 		{
 			pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
 		 	&(*philo)[i]);
-			//printf("ID Philo : %d\n", (*philo)[i].id);
+			printf("Second loop ID Philo : %d\n", (*philo)[i].id);
 		}
 		i++;
 	}
@@ -85,10 +85,7 @@ int	main(int argc, char **argv)
 	t_tab		*tab;
 	t_philo		*philo;
 	t_rules		*rules;
-	long long	startTime;
-	long long	endTime;
 
-	//startTime = getCurrentTimeMillis();
 	if (argc == 6)
 	{
 		if (init_philo(&tab, &philo, &rules, argv))
@@ -101,7 +98,5 @@ int	main(int argc, char **argv)
 	}
     start_philo(&tab, &philo, &rules, argv);
 	free(tab);
-	//endTime = getCurrentTimeMillis() - startTime;
-	//printf("default time : %lld\n", endTime);
 	return (0);
 }

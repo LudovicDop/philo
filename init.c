@@ -6,7 +6,7 @@
 /*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:45:32 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/12 13:33:02 by ludovicdopp      ###   ########.fr       */
+/*   Updated: 2024/03/16 17:42:46 by ludovicdopp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	malloc_struct(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 		printf("Not enought philosophers!\n");
 		return (free(*tab), 1);
 	}
-	printf("Fork : %d\n", (*tab)->fork);
 	*philo = malloc(sizeof(t_philo) * (*tab)->fork);
 	if (!(*philo))
 		return (2);
@@ -43,7 +42,6 @@ int	init_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
     (*rules)->time_to_die = ft_atoi(argv[2]);
     (*rules)->time_to_eat = ft_atoi(argv[3]);
     (*rules)->time_to_sleep = ft_atoi(argv[4]);
-    pthread_mutex_init(&(*tab)->mutex, NULL);
 	(*tab)->global_time = getCurrentTimeMillis();
 	return (0);
 }

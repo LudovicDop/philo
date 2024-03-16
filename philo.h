@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/13 16:30:52 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/16 15:20:04 by ludovicdopp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_tab
 {
 	pthread_mutex_t	mutex;
 	long long				global_time;
+	pthread_mutex_t			*first_fork;
 	int				fork;
 }					t_tab;
 
@@ -46,7 +47,6 @@ typedef struct t_philo
 	int				cur_eat;
 	int				cur_sleep;
 	pthread_mutex_t			fork;
-	pthread_mutex_t			right_fork;
 }					t_philo;
 
 /*utils function*/

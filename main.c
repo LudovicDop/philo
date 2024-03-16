@@ -6,7 +6,7 @@
 /*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/16 17:53:40 by ludovicdopp      ###   ########.fr       */
+/*   Updated: 2024/03/16 23:44:45 by ludovicdopp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,11 @@ void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 
 	repeat = ft_atoi(argv[5]);
 	i = 0;
-
 	while (i < (*tab)->fork)
 	{
 		(*philo)[i].id = i + 1;
-        (*philo)[i].rules = *rules;
-        (*philo)[i].tab = *tab;
+		(*philo)[i].rules = *rules;
+		(*philo)[i].tab = *tab;
 		i++;
 	}
 	init_fork(tab, philo, rules, argv);
@@ -54,11 +53,12 @@ void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 		if (((*philo)[i].id % 2 == 0) || (*philo)[i].id == (*tab)->fork)
 		{
 			pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
-		 	&(*philo)[i]);
-			printf("First loop ID Philo : %d\n", (*philo)[i].id);
+			&(*philo)[i]);
+			//printf("First loop ID Philo : %d\n", (*philo)[i].id);
 		}
 		i++;
 	}
+	usleep(100);
 	i = 0;
 	while (i < (*tab)->fork)
 	{
@@ -67,8 +67,8 @@ void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 		if (!((*philo)[i].id % 2 == 0) && (*philo)[i].id != (*tab)->fork)
 		{
 			pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
-		 	&(*philo)[i]);
-			printf("Second loop ID Philo : %d\n", (*philo)[i].id);
+			&(*philo)[i]);
+			//printf("Second loop ID Philo : %d\n", (*philo)[i].id);
 		}
 		i++;
 	}

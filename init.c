@@ -6,7 +6,7 @@
 /*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:45:32 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/16 17:42:46 by ludovicdopp      ###   ########.fr       */
+/*   Updated: 2024/03/16 18:18:37 by ludovicdopp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	malloc_struct(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 
 int	init_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 {
-	long long	startTime;
-
 	if (malloc_struct(tab, philo, rules, argv))
 		return (2);
     (*rules)->nbre_philo = (*tab)->fork;

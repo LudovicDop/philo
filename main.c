@@ -6,7 +6,7 @@
 /*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/16 23:44:45 by ludovicdopp      ###   ########.fr       */
+/*   Updated: 2024/03/17 11:39:10 by ludovicdopp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,36 @@ void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 	i = 0;
 	while (i < (*tab)->fork)
 	{
-		// pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
-		// 	&(*philo)[i]);
-		if (((*philo)[i].id % 2 == 0) || (*philo)[i].id == (*tab)->fork)
-		{
-			pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
-			&(*philo)[i]);
-			//printf("First loop ID Philo : %d\n", (*philo)[i].id);
-		}
+		pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
+		&(*philo)[i]);
 		i++;
 	}
-	usleep(100);
-	i = 0;
-	while (i < (*tab)->fork)
-	{
-		// pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
-		// 	&(*philo)[i]);
-		if (!((*philo)[i].id % 2 == 0) && (*philo)[i].id != (*tab)->fork)
-		{
-			pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
-			&(*philo)[i]);
-			//printf("Second loop ID Philo : %d\n", (*philo)[i].id);
-		}
-		i++;
-	}
+	// while (i < (*tab)->fork)
+	// {
+	// 	// pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
+	// 	// 	&(*philo)[i]);
+	// 	if (((*philo)[i].id % 2 == 0) || (*philo)[i].id == (*tab)->fork)
+	// 	{
+	// 		pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
+	// 		&(*philo)[i]);
+	// 		//printf("First loop ID Philo : %d\n", (*philo)[i].id);
+	// 	}
+	// 	i++;
+	// }
+	// usleep(100);       
+	// i = 0;
+	// while (i < (*tab)->fork)
+	// {
+	// 	// pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
+	// 	// 	&(*philo)[i]);
+	// 	if (!((*philo)[i].id % 2 == 0) && (*philo)[i].id != (*tab)->fork)
+	// 	{
+	// 		pthread_create(&(*philo)[i].th, NULL, (void *)philosophers,
+	// 		&(*philo)[i]);
+	// 		//printf("Second loop ID Philo : %d\n", (*philo)[i].id);
+	// 	}
+	// 	i++;
+	// }
 	i = 0;
 	while (i < (*tab)->fork)
 	{

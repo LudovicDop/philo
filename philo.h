@@ -6,7 +6,7 @@
 /*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/17 11:53:44 by ludovicdopp      ###   ########.fr       */
+/*   Updated: 2024/03/18 11:47:47 by ludovicdopp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,28 @@ typedef struct s_rules
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				nbre_philo;
+	bool			someone_die;
 }					t_rules;
 
 typedef struct s_tab
 {
-	pthread_mutex_t	mutex;
-	long long				global_time;
+	pthread_mutex_t			mutex;
 	pthread_mutex_t			*first_fork;
-	int				fork;
+	long long				global_time;
+	int						fork;
 }					t_tab;
 
 typedef struct t_philo
 {
-    pthread_t       th;
-    t_rules         *rules;
-    t_tab           *tab;
+	pthread_t		th;
+	t_rules			*rules;
+	t_tab			*tab;
 	int				id;
+	long long		balance;
 	bool			am_i_dead_wtf_bro;
-	long long				last_eat;
+	long long		last_eat;
 	int				cur_sleep;
-	pthread_mutex_t			fork;
+	pthread_mutex_t	fork;
 }					t_philo;
 
 /*utils function*/
@@ -57,7 +59,7 @@ int					malloc_struct(t_tab **tab, t_philo **philo,
 						t_rules **rules, char **argv);
 int					init_philo(t_tab **tab, t_philo **philo, t_rules **rules,
 						char **argv);
-long long getCurrentTimeMillis();
-void	*philosophers(void *arg);
-long long get_time(long long start_time);
+long long			getCurrentTimeMillis(void);
+void				*philosophers(void *arg);
+long long			get_time(long long start_time);
 #endif

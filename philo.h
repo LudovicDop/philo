@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/19 11:09:59 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:47:37 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 typedef struct s_rules
 {
-	int				time_to_die;
+	long long				time_to_die;
 	long long				time_to_eat;
 	int				time_to_sleep;
 	int				nbre_philo;

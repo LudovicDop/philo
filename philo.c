@@ -6,29 +6,19 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/19 11:11:07 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/19 13:20:37 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void check_die(t_philo *tmp)
+void    check_die(t_philo *arg)
 {
     t_philo *philo;
-    long long calc;
 
-    philo = tmp;
-    calc = getCurrentTimeMillis() - philo->last_eat;
-
-    printf("here : %lld %lld\n", calc, philo->rules->time_to_eat);
-    if (calc > philo->rules->time_to_eat)
-    {
-        tmp->rules->someone_die = 1;
-        printf("%lld %d die\n", get_time(philo->tab->global_time), philo->id);
-        exit(EXIT_FAILURE);
-    }
+    philo = arg;
+    
 }
-
 void    i_m_eating(t_philo *tmp)
 {
     long long   time;
@@ -80,7 +70,7 @@ void	*philosophers(void *arg)
 	tmp = (t_philo *)arg;
     if ((tmp->id % 2 == 0) || tmp->id == tmp->tab->fork)
 	{
-        usleep(100);
+        usleep(1000);
     }
     i_m_eating(tmp);
     i_m_sleeping(tmp);

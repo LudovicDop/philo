@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/19 13:20:37 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:40:06 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,17 @@
 void    check_die(t_philo *arg)
 {
     t_philo *philo;
-
-    philo = arg;
+    long long   last_eat;
     
+    philo = arg;
+    //printf("ID %d Calc : %lld - %lld\n",philo->id, getCurrentTimeMillis(), philo->last_eat);
+    last_eat =  getCurrentTimeMillis() - philo->last_eat;
+    printf("%lld > %lld\n", last_eat, arg->rules->time_to_eat);
+    if (last_eat > arg->rules->time_to_eat)
+    {
+        printf("%d die\n", arg->id);
+        exit(EXIT_FAILURE);
+    }
 }
 void    i_m_eating(t_philo *tmp)
 {
@@ -66,11 +74,11 @@ void    i_m_thinking_about_my_fucking_life(t_philo *tmp)
 void	*philosophers(void *arg)
 {
 	t_philo *tmp;
-
+    
 	tmp = (t_philo *)arg;
     if ((tmp->id % 2 == 0) || tmp->id == tmp->tab->fork)
 	{
-        usleep(1000);
+        usleep(100);
     }
     i_m_eating(tmp);
     i_m_sleeping(tmp);

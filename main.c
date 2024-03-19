@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/19 11:09:37 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:33:35 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 void	init_fork(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 {
 	int	i;
+	long long	time;
 
+	time = getCurrentTimeMillis();
 	i = 0;
 	while (i < (*tab)->fork)
 	{
 		pthread_mutex_init(&(*philo)[i].fork, NULL);
+		(*philo)[i].last_eat = time;
 		(*tab)->first_fork = &(*philo)[0].fork;
 		i++;
 	}

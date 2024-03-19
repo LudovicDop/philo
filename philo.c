@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/19 15:47:26 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:15:40 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void    check_die(t_philo *arg)
     philo = arg;
     //printf("ID %d Calc : %lld - %lld\n",philo->id, getCurrentTimeMillis(), philo->last_eat);
     last_eat =  getCurrentTimeMillis() - philo->last_eat;
-    printf("%lld > %lld\n", last_eat, arg->rules->time_to_die);
-    if (last_eat > arg->rules->time_to_die)
+    //printf("%lld > %lld\n", last_eat, arg->rules->time_to_die);
+    if (last_eat >= arg->rules->time_to_die)
     {
-        printf("%d die\n", arg->id);
+        printf("%lld %d died\n",get_time(philo->tab->global_time), arg->id);
         exit(EXIT_FAILURE);
     }
 }
@@ -50,6 +50,7 @@ void    i_m_eating(t_philo *tmp)
     check_die(tmp);
     printf("%lld %d is eating\n", time, (tmp)->id);
     usleep(tmp->rules->time_to_eat * 1000);
+    check_die(tmp);
     tmp->last_eat = getCurrentTimeMillis();
     pthread_mutex_unlock(&tmp->fork);
     if (tmp->id != tmp->tab->fork)

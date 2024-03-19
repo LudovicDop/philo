@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
+/*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/18 11:55:54 by ludovicdopp      ###   ########.fr       */
+/*   Updated: 2024/03/19 11:11:07 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 void check_die(t_philo *tmp)
 {
-    long long   time;
+    t_philo *philo;
+    long long calc;
 
-    time = get_time(tmp->tab->global_time);
-    printf("%lld - %lld = %lld\n", time , tmp->last_eat, (time - tmp->last_eat));
-    if ((time - tmp->last_eat) > tmp->rules->time_to_die)
+    philo = tmp;
+    calc = getCurrentTimeMillis() - philo->last_eat;
+
+    printf("here : %lld %lld\n", calc, philo->rules->time_to_eat);
+    if (calc > philo->rules->time_to_eat)
     {
-        printf("You die bitch %d\n", tmp->id);
+        tmp->rules->someone_die = 1;
+        printf("%lld %d die\n", get_time(philo->tab->global_time), philo->id);
         exit(EXIT_FAILURE);
     }
 }
@@ -30,20 +34,25 @@ void    i_m_eating(t_philo *tmp)
     long long   time;
 
     pthread_mutex_lock(&tmp->fork);
+    check_die(tmp);
     printf("%lld %d has taken a fork\n", get_time(tmp->tab->global_time), (tmp)->id);
     if (tmp->id != tmp->tab->fork)
     {
         pthread_mutex_lock(&(tmp + 1)->fork);
+        check_die(tmp);
         printf("%lld %d has taken a fork\n", get_time(tmp->tab->global_time), (tmp)->id);
     }
     else
     {
         pthread_mutex_lock(tmp->tab->first_fork);
+        check_die(tmp);
         printf("%lld %d has taken a fork\n", get_time(tmp->tab->global_time), (tmp)->id);
     }
     time = get_time(tmp->tab->global_time);
+    check_die(tmp);
     printf("%lld %d is eating\n", time, (tmp)->id);
     usleep(tmp->rules->time_to_eat * 1000);
+    tmp->last_eat = getCurrentTimeMillis();
     pthread_mutex_unlock(&tmp->fork);
     if (tmp->id != tmp->tab->fork)
         pthread_mutex_unlock(&(tmp + 1)->fork);
@@ -53,12 +62,14 @@ void    i_m_eating(t_philo *tmp)
 
 void    i_m_sleeping(t_philo *tmp)
 {
+    check_die(tmp);
     printf("%lld %d is sleeping\n", get_time(tmp->tab->global_time), (tmp)->id);
     usleep(tmp->rules->time_to_sleep * 1000);
 }
 
 void    i_m_thinking_about_my_fucking_life(t_philo *tmp)
 {
+     check_die(tmp);
      printf("%lld %d is thinking\n", get_time(tmp->tab->global_time), (tmp)->id);
 }
 

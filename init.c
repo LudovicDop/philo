@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
+/*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:45:32 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/18 11:48:32 by ludovicdopp      ###   ########.fr       */
+/*   Updated: 2024/03/19 10:39:06 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ int	init_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 	(*rules)->time_to_eat = ft_atoi(argv[3]);
 	(*rules)->time_to_sleep = ft_atoi(argv[4]);
 	(*tab)->global_time = getCurrentTimeMillis();
+	(*philo)->last_eat = (*tab)->global_time;
+	(*rules)->someone_die = 0;
 	return (0);
 }

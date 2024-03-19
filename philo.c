@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/19 17:00:40 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:45:00 by ludovicdopp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void    check_die(t_philo *arg)
     //printf("%lld > %lld\n", last_eat, arg->rules->time_to_die);
     if (arg->rules->someone_die)
         exit(EXIT_FAILURE);
-    if (last_eat >= arg->rules->time_to_die)
+    if (last_eat >= arg->rules->time_to_die + 10)
     {
         philo->rules->someone_die = 1;
         printf("%lld %d died\n",get_time(philo->tab->global_time), arg->id);
@@ -66,13 +66,15 @@ void    i_m_sleeping(t_philo *tmp)
     check_die(tmp);
     printf("%lld %d is sleeping\n", get_time(tmp->tab->global_time), (tmp)->id);
     usleep(tmp->rules->time_to_sleep * 1000);
+    check_die(tmp);
 }
 
 void    i_m_thinking_about_my_fucking_life(t_philo *tmp)
 {
      check_die(tmp);
      printf("%lld %d is thinking\n", get_time(tmp->tab->global_time), (tmp)->id);
-     //usleep(tmp->rules->time_to_eat);
+     usleep(tmp->rules->time_to_eat / 2);
+     check_die(tmp);
 }
 
 void	*philosophers(void *arg)

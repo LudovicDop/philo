@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/19 16:25:19 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:00:40 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void    i_m_thinking_about_my_fucking_life(t_philo *tmp)
 {
      check_die(tmp);
      printf("%lld %d is thinking\n", get_time(tmp->tab->global_time), (tmp)->id);
+     //usleep(tmp->rules->time_to_eat);
 }
 
 void	*philosophers(void *arg)

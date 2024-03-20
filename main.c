@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/19 15:33:35 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:08:18 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,5 @@ int	main(int argc, char **argv)
 		return (1);
 	}
     start_philo(&tab, &philo, &rules, argv);
-	free(tab);
 	return (0);
 }

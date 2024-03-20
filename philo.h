@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/19 15:47:37 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:02:55 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_rules
 
 typedef struct s_tab
 {
-	pthread_mutex_t			mutex;
 	pthread_mutex_t			*first_fork;
 	long long				global_time;
 	int						fork;
@@ -59,7 +58,12 @@ int					malloc_struct(t_tab **tab, t_philo **philo,
 						t_rules **rules, char **argv);
 int					init_philo(t_tab **tab, t_philo **philo, t_rules **rules,
 						char **argv);
-long long			getCurrentTimeMillis(void);
+long int			getCurrentTimeMillis(void);
 void				*philosophers(void *arg);
 long long			get_time(long long start_time);
+int	ft_usleep(long long time);
+void	free_everything(t_philo *tmp);
+void	kill_mutex(t_philo *tmp);
+void	ft_end(t_philo *tmp);
+void    check_die(t_philo *arg);
 #endif

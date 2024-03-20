@@ -3,15 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludovicdoppler <ludovicdoppler@student.    +#+  +:+       +#+        */
+/*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:31:12 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/18 11:41:41 by ludovicdopp      ###   ########.fr       */
+/*   Updated: 2024/03/20 16:42:16 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+void	free_everything(t_philo *tmp)
+{
+	t_philo	*philo;
+
+	philo = tmp;
+	free(philo->tab);
+	philo->tab = NULL;
+	free(philo->rules);
+	philo->rules = NULL;
+	free(philo);
+	philo = NULL;
+}
+
+void	kill_mutex(t_philo *tmp)
+{
+	t_philo	*philo;
+	int		i;
+
+	i = 0;
+	philo = tmp;
+	while (i < tmp->tab->fork)
+	{
+		pthread_mutex_destroy(&tmp[i].fork);
+		i++;
+	}
+}
+
+void	ft_end(t_philo *tmp)
+{
+	kill_mutex(tmp);
+	//free_everything(tmp);
+}
 int	ft_atoi(const char *str)
 {
 	int	ret;
@@ -37,27 +69,17 @@ int	ft_atoi(const char *str)
 	return (ret * is_neg);
 }
 
-long long getCurrentTimeMillis() {
+long int getCurrentTimeMillis() {
     struct timeval currentTime;
     gettimeofday(&currentTime, NULL);
 
-    return (currentTime.tv_sec * 1000LL + currentTime.tv_usec / 1000LL);
+    return (currentTime.tv_sec * 1000 + currentTime.tv_usec / 1000);
 }
 
 long long get_time(long long startTime) {
     return getCurrentTimeMillis() - startTime;
 }
 
-// void	ft_usleep(t_philo *arg)
-// {
-// 	long long time;
-
-// 	time = getCurrentTimeMillis();
-// 	while (!arg->rules->someone_die)
-// 	{
-
-// 	}
-// }
 
 
 

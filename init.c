@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:45:32 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/19 15:28:04 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:22:18 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	malloc_struct(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 	}
 	*philo = malloc(sizeof(t_philo) * (*tab)->fork);
 	if (!(*philo))
-		return (2);
+		return (free(*tab), 2);
 	*rules = malloc(sizeof(t_rules));
 	if (!(*rules))
-		return (2);
+		return (free(*tab), free(*philo), 2);
 	return (0);
 }
 

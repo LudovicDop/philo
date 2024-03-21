@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/21 13:27:36 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:42:30 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,5 @@ void	*philosophers(void *arg)
     i_m_eating(tmp);
     i_m_sleeping(tmp);
     i_m_thinking_about_my_fucking_life(tmp);
+    //ft_end(tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/21 13:09:54 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:43:14 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ void	init_fork(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 	while (i < (*tab)->fork)
 	{
 		pthread_mutex_init(&(*philo)[i].fork, NULL);
-		// if (!((*philo)[i].id % 2) || (*philo)[i].id == (*tab)->fork)
-		// {
-		// 	printf("id : %d\n", (*philo)[i].id);
-		// 	pthread_mutex_init(&(*philo)[i].fork_odd, NULL);
-		// }
 		(*philo)[i].last_eat = time;
 		(*tab)->first_fork = &(*philo)[0].fork;
 		i++;
@@ -67,6 +62,7 @@ void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 		}
 		j++;
 	}
+	ft_end(*philo);
 }
 
 int	main(int argc, char **argv)

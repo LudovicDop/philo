@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:31:12 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/21 13:23:19 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:42:23 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	kill_mutex(t_philo *tmp)
 void	ft_end(t_philo *tmp)
 {
 	kill_mutex(tmp);
-	//free_everything(tmp);
+	free_everything(tmp);
 }
 int	ft_atoi(const char *str)
 {

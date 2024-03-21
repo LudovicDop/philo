@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/21 14:45:28 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:17:36 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int    check_die(t_philo *arg)
     {
         philo->rules->someone_die = 1;
         printf("%lld %d died\n",get_time(philo->tab->global_time), arg->id);
-        ft_end(arg);
+        //ft_end(arg);
         return (1);
     }
     return (0);
@@ -45,26 +45,30 @@ int    i_m_eating(t_philo *tmp)
     long long   time;
     int result;
 
-    pthread_mutex_lock(&tmp->fork);
-    ft_printf("has taken a fork", get_time(tmp->tab->global_time), tmp, 0);
-    if (tmp->id != tmp->tab->fork)
+    result = 0;
+    if (!tmp->rules->someone_die)
     {
-        pthread_mutex_lock(&(tmp + 1)->fork);
+        pthread_mutex_lock(&tmp->fork);
         ft_printf("has taken a fork", get_time(tmp->tab->global_time), tmp, 0);
+        if (tmp->id != tmp->tab->fork)
+        {
+            pthread_mutex_lock(&(tmp + 1)->fork);
+            ft_printf("has taken a fork", get_time(tmp->tab->global_time), tmp, 0);
+        }
+        else
+        {
+            pthread_mutex_lock(tmp->tab->first_fork);
+            ft_printf("has taken a fork", get_time(tmp->tab->global_time), tmp, 0);
+        }
+        result = ft_printf("is eating", get_time(tmp->tab->global_time), tmp, tmp->rules->time_to_eat);
+        tmp->last_eat = getCurrentTimeMillis();
+        pthread_mutex_unlock(&tmp->fork);
+        if (tmp->id != tmp->tab->fork)
+            pthread_mutex_unlock(&(tmp + 1)->fork);
+        else
+            pthread_mutex_unlock(tmp->tab->first_fork);
     }
-    else
-    {
-        pthread_mutex_lock(tmp->tab->first_fork);
-        result = ("has taken a fork", get_time(tmp->tab->global_time), tmp, 0);
-    }
-    return (ft_printf("is eating", get_time(tmp->tab->global_time), tmp, tmp->rules->time_to_eat));
-    tmp->last_eat = getCurrentTimeMillis();
-    pthread_mutex_unlock(&tmp->fork);
-    if (tmp->id != tmp->tab->fork)
-        pthread_mutex_unlock(&(tmp + 1)->fork);
-    else
-        pthread_mutex_unlock(tmp->tab->first_fork);
-    return (0);
+    return (result);
 }
 
 int    i_m_sleeping(t_philo *tmp)
@@ -88,9 +92,15 @@ int	philosophers(void *arg)
         usleep(500);
     }
     if (i_m_eating(tmp))
+    {
+        //printf("KO\n");
         return (1);
+    }
     if (i_m_sleeping(tmp))
+    {
+        //printf("KO\n");
         return (1);
+    }
     i_m_thinking_about_my_fucking_life(tmp);
     return (0);
 }

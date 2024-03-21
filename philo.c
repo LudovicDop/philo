@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/21 15:17:36 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:39:55 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int    ft_printf(char *str, long long milisec, t_philo *tmp, long long sleep)
             return (1);
         printf("%lld %d %s\n", milisec, tmp->id, str);
         ft_usleep(sleep);
-        if(check_die(tmp))
+        if(check_die(tmp) && !tmp->rules->someone_die)
             return (1);
         return (0);
 }
@@ -35,7 +35,6 @@ int    check_die(t_philo *arg)
     {
         philo->rules->someone_die = 1;
         printf("%lld %d died\n",get_time(philo->tab->global_time), arg->id);
-        //ft_end(arg);
         return (1);
     }
     return (0);

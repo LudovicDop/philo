@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/21 13:37:32 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:56:30 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ int					malloc_struct(t_tab **tab, t_philo **philo,
 int					init_philo(t_tab **tab, t_philo **philo, t_rules **rules,
 						char **argv);
 long int			getCurrentTimeMillis(void);
-void				*philosophers(void *arg);
+int				philosophers(void *arg);
 long long			get_time(long long start_time);
 int	ft_usleep(long long time);
 void	free_everything(t_philo *tmp);
 void	kill_mutex(t_philo *tmp);
 void	ft_end(t_philo *tmp);
-void    check_die(t_philo *arg);
+int    check_die(t_philo *arg);
 #endif

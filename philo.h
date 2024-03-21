@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/20 17:02:55 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:13:18 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct t_philo
 	long long		last_eat;
 	int				cur_sleep;
 	pthread_mutex_t	fork;
+	pthread_mutex_t	fork_odd;
 }					t_philo;
 
 /*utils function*/

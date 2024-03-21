@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:31:12 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/20 16:42:16 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:23:19 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,19 @@ long int getCurrentTimeMillis() {
 
 long long get_time(long long startTime) {
     return getCurrentTimeMillis() - startTime;
+}
+
+int	ft_usleep(long long milliseconds)
+{
+	long long	start;
+
+	start = getCurrentTimeMillis();
+	while ((getCurrentTimeMillis() - start) < milliseconds)
+	{
+		//printf("%ld %lld = %lld | %lld\n", getCurrentTimeMillis(), start,(getCurrentTimeMillis() - start), milliseconds);
+		usleep(500);
+	}
+	return (0);
 }
 
 

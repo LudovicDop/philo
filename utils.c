@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:31:12 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/21 13:42:23 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:16:26 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	ft_atoi(const char *str)
 		ret = (ret * 10) + str[i] - '0';
 		i++;
 	}
+	//if (*str != '\0')
+		//return (1);
 	return (ret * is_neg);
 }
 

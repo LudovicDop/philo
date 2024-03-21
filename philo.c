@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/21 15:39:55 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:20:46 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,9 @@ int    i_m_sleeping(t_philo *tmp)
     return (ft_printf("is sleeping", get_time(tmp->tab->global_time), tmp, tmp->rules->time_to_sleep));
 }
 
-void    i_m_thinking_about_my_fucking_life(t_philo *tmp)
+int    i_m_thinking_about_my_fucking_life(t_philo *tmp)
 {
-     //ft_printf("is thinking", get_time(tmp->tab->global_time), tmp, tmp->rules->time_to_eat / 2);
-     printf("%lld %d is thinking\n", get_time(tmp->tab->global_time), tmp->id);
+     return (ft_printf("is thinking", get_time(tmp->tab->global_time), tmp, 0));
 }
 
 int	philosophers(void *arg)
@@ -87,19 +86,12 @@ int	philosophers(void *arg)
     
 	tmp = (t_philo *)arg;
     if ((tmp->id % 2 == 0) || tmp->id == tmp->tab->fork)
-	{
         usleep(500);
-    }
     if (i_m_eating(tmp))
-    {
-        //printf("KO\n");
         return (1);
-    }
     if (i_m_sleeping(tmp))
-    {
-        //printf("KO\n");
         return (1);
-    }
-    i_m_thinking_about_my_fucking_life(tmp);
+    if(i_m_thinking_about_my_fucking_life(tmp))
+        return (1);
     return (0);
 }

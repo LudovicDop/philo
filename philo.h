@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/22 12:32:14 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/22 13:59:48 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <time.h>
 # include <stdbool.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_rules
 {
@@ -36,6 +37,7 @@ typedef struct s_tab
 	pthread_mutex_t			*first_fork;
 	long long				global_time;
 	int						fork;
+	int						argc;
 }					t_tab;
 
 typedef struct t_philo

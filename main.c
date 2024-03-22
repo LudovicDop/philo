@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/22 12:52:43 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:00:27 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,11 @@ void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 	int	repeat;
 
 	j = 0;
-	repeat = ft_atoi(argv[5]);
-	while (j < repeat)
+	if ((*tab)->argc == 6)
+		repeat = ft_atoi(argv[5]);
+	else
+		repeat = -1;
+	while (j < repeat || repeat == -1)
 	{
 		i = 0;
 		while (i < (*tab)->fork)
@@ -99,10 +102,11 @@ int	main(int argc, char **argv)
 		printf("Please enter some valid parameter!\n");
 		return (2);
 	}
-	if (argc == 6)
+	if (argc == 6 || argc == 5)
 	{
 		if (init_philo(&tab, &philo, &rules, argv))
 			return (1);
+		tab->argc = argc;
 	}
 	else
 	{

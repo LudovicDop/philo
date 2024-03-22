@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/22 14:00:27 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/22 15:54:48 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 		repeat = ft_atoi(argv[5]);
 	else
 		repeat = -1;
-	while (j < repeat || repeat == -1)
+	while (j < repeat || repeat == -1 && (*rules)->someone_die != 1)
 	{
 		i = 0;
 		while (i < (*tab)->fork)

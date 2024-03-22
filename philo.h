@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/21 13:56:30 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:32:14 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_rules
 	int				time_to_sleep;
 	int				nbre_philo;
 	bool			someone_die;
+	pthread_mutex_t	die;
 }					t_rules;
 
 typedef struct s_tab

@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/21 16:20:46 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:37:16 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ int    check_die(t_philo *arg)
     last_eat =  getCurrentTimeMillis() - philo->last_eat;
     if (arg->rules->someone_die)
         return (1);
-    if (last_eat >= arg->rules->time_to_die)
+    pthread_mutex_lock(&philo->rules->die);
+    if (last_eat >= arg->rules->time_to_die && !arg->rules->someone_die)
     {
         philo->rules->someone_die = 1;
         printf("%lld %d died\n",get_time(philo->tab->global_time), arg->id);
+        pthread_mutex_unlock(&philo->rules->die);
         return (1);
     }
+    pthread_mutex_unlock(&philo->rules->die);
     return (0);
 }
 int    i_m_eating(t_philo *tmp)

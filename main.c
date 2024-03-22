@@ -6,12 +6,35 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/21 15:47:11 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:52:43 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+int		check_my_args(char **argv, int	argc)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 0;
+	while (i < argc - 1)
+	{
+		while (argv[i])
+		{
+			j = 0;
+			while (argv[i][j] >= '0' && argv[i][j] <= '9')
+			{
+				j++;
+			}
+			if (argv[i][j] != '\0')
+				return (2);
+			i++;
+		}
+	}
+	return (0);
+}
 void	init_fork(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 {
 	int	i;
@@ -71,6 +94,11 @@ int	main(int argc, char **argv)
 	t_philo		*philo;
 	t_rules		*rules;
 
+	if(check_my_args(argv + 1, argc))
+	{
+		printf("Please enter some valid parameter!\n");
+		return (2);
+	}
 	if (argc == 6)
 	{
 		if (init_philo(&tab, &philo, &rules, argv))

@@ -6,26 +6,26 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/22 13:59:48 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/26 18:57:38 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+# include <limits.h>
 # include <pthread.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/time.h>
 # include <time.h>
-# include <stdbool.h>
 # include <unistd.h>
-# include <limits.h>
 
 typedef struct s_rules
 {
-	long long				time_to_die;
-	long long				time_to_eat;
+	long long		time_to_die;
+	long long		time_to_eat;
 	int				time_to_sleep;
 	int				nbre_philo;
 	bool			someone_die;
@@ -34,10 +34,10 @@ typedef struct s_rules
 
 typedef struct s_tab
 {
-	pthread_mutex_t			*first_fork;
-	long long				global_time;
-	int						fork;
-	int						argc;
+	pthread_mutex_t	*first_fork;
+	long long		global_time;
+	int				fork;
+	int				argc;
 }					t_tab;
 
 typedef struct t_philo
@@ -58,16 +58,19 @@ typedef struct t_philo
 int					ft_atoi(const char *str);
 
 /*philo function*/
-int					malloc_struct(t_tab **tab, t_philo **philo,
-						t_rules **rules, char **argv);
+int					malloc_struct(t_tab **tab, t_philo **philo, t_rules **rules,
+						char **argv);
 int					init_philo(t_tab **tab, t_philo **philo, t_rules **rules,
 						char **argv);
-long int			getCurrentTimeMillis(void);
-int				philosophers(void *arg);
+long int			get_current_time(void);
+int					philosophers(void *arg);
 long long			get_time(long long start_time);
-int	ft_usleep(long long time);
-void	free_everything(t_philo *tmp);
-void	kill_mutex(t_philo *tmp);
-void	ft_end(t_philo *tmp);
-int    check_die(t_philo *arg);
+int					ft_usleep(long long time);
+void				free_everything(t_philo *tmp);
+void				kill_mutex(t_philo *tmp);
+void				ft_end(t_philo *tmp);
+int					check_die(t_philo *arg);
+int					ft_printf(char *str, long long milisec, t_philo *tmp,
+						long long sleep);
+long int			get_current_time(void);
 #endif

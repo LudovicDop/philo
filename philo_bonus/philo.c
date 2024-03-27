@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:52:50 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/27 16:55:31 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:32:27 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,16 @@ int    check_die(t_philo *philo)
     //printf("%lld\n", last_time_eat);
     if (philo->rules->someone_die)
         return (2);
+    sem_wait(&philo->rules->die);
     if (last_time_eat >= philo->rules->time_before_die && philo->rules->someone_die != 1)
     {
         printf("%lld %d\n", last_time_eat, philo->rules->time_before_die);
         philo->rules->someone_die = 1;
         printf("%ld %d died\n", get_current_time() - philo->rules->start_time, philo->id);
+        sem_post(&philo->rules->die);
         return (2);
     }
+    sem_post(&philo->rules->die);
     return (0);
 }
 int    ft_printf(t_philo *philo, char *string, long long sleep)
@@ -78,10 +81,10 @@ int    philosophers(void *arg)
     t_philo *philo;
 
     philo = arg;
-    if (philo->id % 2 == 0 || philo->id == philo->rules->nbre_of_philo)
+    if (philo->id % 2 == 0 || philo->id == philo->rules->nbre_of_philo - 1)
     {
-        printf("ret %d\n", philo->id);   
-        usleep(500);
+        //printf("ret %d\n", philo->id);   
+        usleep(100);
     }
     if (is_eating(philo))
     {

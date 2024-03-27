@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:30:45 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/27 11:15:16 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 11:22:50 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void    *philosophers(void *arg)
     t_philo *philo;
 
     philo = arg;
+    sem_wait(&philo->rules->fork);
+    sleep(1);
     printf("hello %d\n", philo->id);
+    sem_post(&philo->rules->fork);
     return (NULL);
 }
 void    start_thread(t_philo *philo)

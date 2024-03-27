@@ -13,6 +13,7 @@ typedef struct s_rules
     int time_to_eat;
     int time_to_sleep;
     int nbre_of_philo;
+    int how_many_dinner;
     sem_t fork;
 } t_rules;
 
@@ -20,7 +21,7 @@ typedef struct s_philo
 {
     int id;
     pthread_t philo;
-    t_rules *fork;
+    t_rules *rules;
 } t_philo;
 
 int	ft_atoi(const char *str);

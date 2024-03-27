@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:30:45 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/27 15:11:34 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:56:19 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ void    start_thread(t_philo *philo)
 
     j = 0;
     i = 0;
-    while (j < philo->rules->how_many_dinner || philo->rules->how_many_dinner == -1)
+    while (j < philo->rules->how_many_dinner || philo->rules->how_many_dinner == -1 && philo->rules->someone_die != 1)
     {
+        printf("NEW\n");
+        i = 0;
         while (i < philo->rules->nbre_of_philo)
         {
             philo[i].id = i + 1;

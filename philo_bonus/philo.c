@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:52:50 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/27 15:09:19 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:55:21 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ int    check_die(t_philo *philo)
     long long last_time_eat;
 
     last_time_eat = get_current_time() - philo->last_time_eat; 
+    //printf("%lld\n", last_time_eat);
     if (philo->rules->someone_die)
         return (2);
     if (last_time_eat >= philo->rules->time_before_die && philo->rules->someone_die != 1)
     {
+        //printf("%lld %d\n", last_time_eat,philo->rules->time_before_die);
         philo->rules->someone_die = 1;
         printf("%ld %d died\n", get_current_time() - philo->rules->start_time, philo->id);
-        exit(EXIT_FAILURE);
+        return (2);
     }
     return (0);
 }
@@ -76,6 +78,8 @@ int    philosophers(void *arg)
     t_philo *philo;
 
     philo = arg;
+    if (philo->id % 2 == 0 || philo->id == philo->rules->nbre_of_philo)
+        usleep(500);
     if (is_eating(philo))
         return (2);
     if (is_sleeping(philo))

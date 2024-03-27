@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:27:54 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/27 17:29:47 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:41:52 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void    init_variable(t_philo **philo, int argc, char **argv, t_rules **rules)
     else
         (*rules)->how_many_dinner = -1;
     sem_init(&(*rules)->fork, 0, nbre_of_philo / 2);
+    sem_init(&(*rules)->odd, 0, (nbre_of_philo / 2) + 1);
     sem_init(&(*rules)->die, 0, 1);
     while (i < nbre_of_philo)
     {

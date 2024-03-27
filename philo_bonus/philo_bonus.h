@@ -19,6 +19,7 @@ typedef struct s_rules
     int someone_die;
     long start_time;
     sem_t fork;
+    sem_t odd;
     sem_t die;
 } t_rules;
 

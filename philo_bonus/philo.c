@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:52:50 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/27 17:32:27 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:51:46 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int    is_eating(t_philo *philo)
 
     ret = 0;
     sem_wait(&philo->rules->fork);
+    if (!philo->id % 2 == 0 || philo->id != philo->rules->nbre_of_philo - 1)
+        sem_post(&philo->rules->odd);
     ret += ft_printf(philo, "has taken a fork", 0);
     ret += ft_printf(philo, "has taken a fork", 0);
     ret += ft_printf(philo, "is eating", philo->rules->time_to_eat);
@@ -83,8 +85,8 @@ int    philosophers(void *arg)
     philo = arg;
     if (philo->id % 2 == 0 || philo->id == philo->rules->nbre_of_philo - 1)
     {
-        //printf("ret %d\n", philo->id);   
-        usleep(100);
+        usleep(500);
+        sem_wait(&philo->rules->odd);  
     }
     if (is_eating(philo))
     {

@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:52:50 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/27 13:07:11 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 14:15:45 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ int    ft_printf(t_philo *philo, char *string, long long sleep)
     int ret;
 
     ret = 0;
-    ret += check_die(philo);
+    if (check_die(philo))
+        return (2);
     printf("%ld %d %s\n", get_current_time() - philo->rules->start_time, philo->id, string);
     ft_usleep(sleep);
-    ret += check_die(philo);
+    if (check_die(philo))
+        return (2);
     return (ret);
 }
 int    is_eating(t_philo *philo)
@@ -44,9 +46,9 @@ int    is_eating(t_philo *philo)
 
     ret = 0;
     sem_wait(&philo->rules->fork);
-    ft_printf(philo, "has taken a fork", 0);
-    ft_printf(philo, "has taken a fork", 0);
-    ret = ft_printf(philo, "is eating", philo->rules->time_to_eat);
+    ret += ft_printf(philo, "has taken a fork", 0);
+    ret += ft_printf(philo, "has taken a fork", 0);
+    ret += ft_printf(philo, "is eating", philo->rules->time_to_eat);
     philo->last_time_eat = get_current_time();
     sem_post(&philo->rules->fork);
     return (ret);
@@ -69,7 +71,7 @@ int    is_thinking(t_philo *philo)
     return (ret);
 }
 
-int    *philosophers(void *arg)
+int    philosophers(void *arg)
 {
     t_philo *philo;
 
@@ -80,5 +82,5 @@ int    *philosophers(void *arg)
         return (2);
     if (is_thinking(philo))
         return (2);
-    return (NULL);
+    return (0);
 }

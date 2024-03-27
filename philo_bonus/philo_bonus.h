@@ -20,10 +20,11 @@ typedef struct s_rules
 typedef struct s_philo
 {
     int id;
-    pthread_t philo;
+    pthread_t th;
     t_rules *rules;
 } t_philo;
 
 int	ft_atoi(const char *str);
 int	check_my_args(char **argv, int argc);
+void    init_variable(t_philo **philo, int argc, char **argv, t_rules **rules);
 #endif

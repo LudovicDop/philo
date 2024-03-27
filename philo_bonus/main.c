@@ -6,23 +6,12 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:30:45 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/27 11:29:04 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 11:52:59 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void    *philosophers(void *arg)
-{
-    t_philo *philo;
-
-    philo = arg;
-    sem_wait(&philo->rules->fork);
-    sleep(1);
-    printf("hello %d\n", philo->id);
-    sem_post(&philo->rules->fork);
-    return (NULL);
-}
 void    start_thread(t_philo *philo)
 {
     int i;

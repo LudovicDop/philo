@@ -1,4 +1,4 @@
-SRC = main.c init.c utils.c
+SRC = main.c init.c utils.c philo.c
 CC = cc
 FLAGS = -Wall -Werror -Wextra
 OBJ = $(SRC:.c=.o)

@@ -6,9 +6,11 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:41:20 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/27 10:43:12 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 12:00:10 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "philo_bonus.h"
 
 int	check_my_args(char **argv, int argc)
 {
@@ -58,3 +60,24 @@ int	ft_atoi(const char *str)
 	}
 	return (ret * is_neg);
 }
+
+long int	get_current_time(void)
+{
+	struct timeval	current_time;
+
+	gettimeofday(&current_time, NULL);
+	return (current_time.tv_sec * 1000 + current_time.tv_usec / 1000);
+}
+
+int	ft_usleep(long long milliseconds)
+{
+	long long	start;
+
+	start = get_current_time();
+	while ((get_current_time() - start) < milliseconds)
+	{
+		usleep(500);
+	}
+	return (0);
+}
+

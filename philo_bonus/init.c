@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:27:54 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/27 11:28:31 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 12:01:40 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void    init_variable(t_philo **philo, int argc, char **argv, t_rules **rules)
     (*rules)->time_before_die = ft_atoi(argv[1]);
     (*rules)->time_to_eat = ft_atoi(argv[2]);
     (*rules)->time_to_sleep = ft_atoi(argv[3]);
+    (*rules)->someone_die = 0;
+    (*rules)->start_time = get_current_time();
     if (argc == 6)
         (*rules)->how_many_dinner = ft_atoi(argv[4]);
     else

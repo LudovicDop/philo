@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:52:50 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/27 15:55:21 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:55:31 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int    check_die(t_philo *philo)
         return (2);
     if (last_time_eat >= philo->rules->time_before_die && philo->rules->someone_die != 1)
     {
-        //printf("%lld %d\n", last_time_eat,philo->rules->time_before_die);
+        printf("%lld %d\n", last_time_eat, philo->rules->time_before_die);
         philo->rules->someone_die = 1;
         printf("%ld %d died\n", get_current_time() - philo->rules->start_time, philo->id);
         return (2);
@@ -79,12 +79,24 @@ int    philosophers(void *arg)
 
     philo = arg;
     if (philo->id % 2 == 0 || philo->id == philo->rules->nbre_of_philo)
+    {
+        printf("ret %d\n", philo->id);   
         usleep(500);
+    }
     if (is_eating(philo))
+    {
+        //printf("Nonok %d\n", philo->id);
         return (2);
+    }
     if (is_sleeping(philo))
+    {
+        //printf("Nonok %d\n", philo->id);
         return (2);
+    }
     if (is_thinking(philo))
+    {
+        //printf("Nonok %d\n", philo->id);
         return (2);
+    }
     return (0);
 }

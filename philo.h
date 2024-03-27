@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/26 18:57:38 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 11:57:46 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/time.h>
-# include <time.h>
 # include <unistd.h>
 
 typedef struct s_rules

@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:27:54 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/27 11:24:00 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 11:28:31 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void    init_variable(t_philo **philo, int argc, char **argv, t_rules **rules)
         (*rules)->how_many_dinner = ft_atoi(argv[4]);
     else
         (*rules)->how_many_dinner = -1;
-    sem_init(&(*rules)->fork, 0, 1);
+    printf("result : %d\n", nbre_of_philo / 2);
+    sem_init(&(*rules)->fork, 0, nbre_of_philo / 2);
     while (i < nbre_of_philo)
         (*philo)[i++].rules = *rules;
 }

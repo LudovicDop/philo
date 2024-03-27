@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:30:45 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/27 11:22:50 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 11:29:04 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void    start_thread(t_philo *philo)
         i++;
     }
     i = 0;
-    while (i < 5)
+    while (i < philo->rules->nbre_of_philo)
     {
         pthread_join(philo[i].th, NULL);
         i++;

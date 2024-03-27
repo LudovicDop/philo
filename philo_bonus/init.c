@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:27:54 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/27 12:01:40 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 12:40:27 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,8 @@ void    init_variable(t_philo **philo, int argc, char **argv, t_rules **rules)
     printf("result : %d\n", nbre_of_philo / 2);
     sem_init(&(*rules)->fork, 0, nbre_of_philo / 2);
     while (i < nbre_of_philo)
+    {
+        (*philo)[i].last_time_eat = (*rules)->start_time;
         (*philo)[i++].rules = *rules;
+    }
 }

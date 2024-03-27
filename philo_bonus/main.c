@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:30:45 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/27 13:52:09 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:11:34 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,27 @@
 void    start_thread(t_philo *philo)
 {
     int i;
+    int j;
 
+    j = 0;
     i = 0;
-    while (i < philo->rules->nbre_of_philo)
+    while (j < philo->rules->how_many_dinner || philo->rules->how_many_dinner == -1)
     {
-        philo[i].id = i + 1;
-        pthread_create(&philo[i].th, NULL, (void*)&philosophers, &philo[i]);
-        i++;
+        while (i < philo->rules->nbre_of_philo)
+        {
+            philo[i].id = i + 1;
+            pthread_create(&philo[i].th, NULL, (void*)&philosophers, &philo[i]);
+            i++;
+        }
+        i = 0;
+        while (i < philo->rules->nbre_of_philo)
+        {
+            pthread_join(philo[i].th, NULL);
+            i++;
+        }
+        j++;  
     }
-    i = 0;
-    while (i < philo->rules->nbre_of_philo)
-    {
-        pthread_join(philo[i].th, NULL);
-        i++;
-    } 
+    printf("END\n");
 }
 int main(int argc, char **argv)
 {

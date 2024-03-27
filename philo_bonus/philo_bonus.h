@@ -32,7 +32,7 @@ typedef struct s_philo
 int	ft_atoi(const char *str);
 int	check_my_args(char **argv, int argc);
 void    init_variable(t_philo **philo, int argc, char **argv, t_rules **rules);
-void    *philosophers(void *arg);
+int    *philosophers(void *arg);
 int	ft_usleep(long long milliseconds);
 long int	get_current_time(void);
 #endif

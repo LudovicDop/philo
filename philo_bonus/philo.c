@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:52:50 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 15:21:27 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:24:16 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	ft_printf(t_philo *philo, char *string, long long sleep)
 	ret = 0;
 	if (check_die(philo))
 		return (2);
-	if (get_current_time() - philo->last_time_eat + sleep < philo->rules->time_before_die)
+	if (get_current_time() - philo->last_time_eat
+		+ sleep < philo->rules->time_before_die)
 	{
 		printf("%ld %d %s\n", get_current_time() - philo->rules->start_time,
 			philo->id, string);
@@ -29,15 +30,15 @@ int	ft_printf(t_philo *philo, char *string, long long sleep)
 	{
 		sem_wait(&philo->rules->die);
 		philo->rules->someone_die = 1;
-		printf("%ld %d %s\n", get_current_time() - philo->rules->start_time, philo->id, string);
+		printf("%ld %d %s\n", get_current_time() - philo->rules->start_time,
+			philo->id, string);
 		ft_usleep(philo->rules->time_before_die, philo);
-		printf("%ld %d died\n", get_current_time() - philo->rules->start_time, philo->id);
+		printf("%ld %d died\n", get_current_time() - philo->rules->start_time,
+			philo->id);
 		sem_post(&philo->rules->die);
 		return (1);
 	}
-	if (check_die(philo))
-		return (2);
-	return (ret);
+	return (check_die(philo));
 }
 
 int	is_eating(t_philo *philo)

@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/28 15:04:29 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:04:11 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ int	main(int argc, char **argv)
 		if (init_philo(&tab, &philo, &rules, argv))
 			return (1);
 		tab->argc = argc;
+		if (argc == 6)
+			rules->how_many_diner = ft_atoi(argv[5]);
 	}
 	else
 	{

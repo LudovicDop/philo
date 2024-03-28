@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 15:06:55 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:04:23 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	philosophers(void *arg)
 
 	j = 0;
 	tmp = (t_philo *)arg;
-	while (j < tmp->rules->nbre_philo || tmp->tab->argc == 5)
+	while (j < tmp->rules->how_many_diner || tmp->tab->argc == 5)
 	{
 		if ((tmp->id % 2 == 0) || tmp->id == tmp->tab->fork)
 			usleep(500);

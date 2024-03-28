@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/27 11:57:46 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:13:04 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_rules
 typedef struct s_tab
 {
 	pthread_mutex_t	*first_fork;
-	long long		global_time;
+	long long		global;
 	int				fork;
 	int				argc;
 }					t_tab;

@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:45:32 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/26 18:51:23 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:12:35 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	init_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 	(*rules)->time_to_eat = ft_atoi(argv[3]);
 	(*rules)->time_to_sleep = ft_atoi(argv[4]);
 	pthread_mutex_init(&(*rules)->die, NULL);
-	(*tab)->global_time = get_current_time();
+	(*tab)->global = get_current_time();
 	(*rules)->someone_die = 0;
 	return (0);
 }

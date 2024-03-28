@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/28 12:01:40 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:10:32 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,37 +77,26 @@ int	start_philo_bis(t_tab **tab, t_philo **philo)
 int	start_philo(t_tab **tab, t_philo **philo, t_rules **rules, char **argv)
 {
 	int	i;
-	//int	j;
-	int	repeat;
 
-	//j = 0;
-	if ((*tab)->argc == 6)
-		repeat = ft_atoi(argv[5]);
-	else
-		repeat = -1;
-	//while (j < repeat || repeat == -1 && (*rules)->someone_die != 1)
-	//{
-		i = 0;
-		while (i < (*tab)->fork)
-		{
-			(*philo)[i].id = i + 1;
-			(*philo)[i].rules = *rules;
-			(*philo)[i].tab = *tab;
-			i++;
-		}
-		init_fork(tab, philo, rules, argv);
-		start_philo_bis(tab, philo);
-		//j++;
-	//}
+	i = 0;
+	while (i < (*tab)->fork)
+	{
+		(*philo)[i].id = i + 1;
+		(*philo)[i].rules = *rules;
+		(*philo)[i].tab = *tab;
+		i++;
+	}
+	init_fork(tab, philo, rules, argv);
+	start_philo_bis(tab, philo);
 	ft_end(*philo);
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	t_tab		*tab;
-	t_philo		*philo;
-	t_rules		*rules;
+	t_tab	*tab;
+	t_philo	*philo;
+	t_rules	*rules;
 
 	if (check_my_args(argv + 1, argc))
 	{

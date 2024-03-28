@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 12:08:02 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:12:52 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 int	i_m_eating_bis(t_philo *tmp)
 {
 	pthread_mutex_lock(&tmp->fork);
-	ft_printf("has taken a fork", get_time(tmp->tab->global_time), tmp, 0);
+	ft_printf("has taken a fork", get_time(tmp->tab->global), tmp, 0);
 	if (tmp->id != tmp->tab->fork)
 	{
 		pthread_mutex_lock(&(tmp + 1)->fork);
-		ft_printf("has taken a fork", get_time(tmp->tab->global_time), tmp, 0);
+		ft_printf("has taken a fork", get_time(tmp->tab->global), tmp, 0);
 	}
 	else
 	{
 		pthread_mutex_lock(tmp->tab->first_fork);
-		ft_printf("has taken a fork", get_time(tmp->tab->global_time), tmp, 0);
+		ft_printf("has taken a fork", get_time(tmp->tab->global), tmp, 0);
 	}
 }
 
@@ -37,7 +37,7 @@ int	i_m_eating(t_philo *tmp)
 	if (!tmp->rules->someone_die)
 	{
 		i_m_eating_bis(tmp);
-		result = ft_printf("is eating", get_time(tmp->tab->global_time), tmp,
+		result = ft_printf("is eating", get_time(tmp->tab->global), tmp,
 				tmp->rules->time_to_eat);
 		tmp->last_eat = get_current_time();
 		pthread_mutex_unlock(&tmp->fork);
@@ -51,13 +51,13 @@ int	i_m_eating(t_philo *tmp)
 
 int	i_m_sleeping(t_philo *tmp)
 {
-	return (ft_printf("is sleeping", get_time(tmp->tab->global_time), tmp,
+	return (ft_printf("is sleeping", get_time(tmp->tab->global), tmp,
 			tmp->rules->time_to_sleep));
 }
 
 int	i_m_thinking_about_my_fucking_life(t_philo *tmp)
 {
-	return (ft_printf("is thinking", get_time(tmp->tab->global_time), tmp, 0));
+	return (ft_printf("is thinking", get_time(tmp->tab->global), tmp, 0));
 }
 
 int	philosophers(void *arg)
@@ -73,9 +73,9 @@ int	philosophers(void *arg)
 			usleep(500);
 		if (tmp->tab->fork == 1)
 		{
-			ft_printf("has taken a fork", get_time(tmp->tab->global_time), tmp, 0);
+			ft_printf("has taken a fork", get_time(tmp->tab->global), tmp, 0);
 			tmp->rules->someone_die = 1;
-			printf("%lld %d died\n", get_time(tmp->tab->global_time), tmp->id);
+			printf("%lld %d died\n", get_time(tmp->tab->global), tmp->id);
 			return (1);
 		}
 		if (i_m_eating(tmp))

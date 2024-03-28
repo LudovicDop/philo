@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:30:45 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/28 12:18:46 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:38:16 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	start_thread(t_philo *philo)
 		pthread_join(philo[i].th, NULL);
 		i++;
 	}
+	free(philo->rules);
+	free(philo);
 }
 
 int	main(int argc, char **argv)

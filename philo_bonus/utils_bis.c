@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:59:33 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 12:30:12 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:37:28 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	check_die(t_philo *philo)
 	if (last_time_eat >= philo->rules->time_before_die
 		&& philo->rules->someone_die != 1)
 	{
-		printf("%lld %d\n", last_time_eat, philo->rules->time_before_die);
 		philo->rules->someone_die = 1;
 		printf("%ld %d died\n", get_current_time() - philo->rules->start_time,
 			philo->id);

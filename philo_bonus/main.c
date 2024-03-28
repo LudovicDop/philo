@@ -6,11 +6,17 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:30:45 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/28 12:40:17 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 13:01:01 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
+
+void	kill_sem(t_philo *philo)
+{
+	sem_close(&philo->rules->die);
+	sem_close(&philo->rules->fork);
+}
 
 void	start_thread(t_philo *philo)
 {
@@ -32,6 +38,7 @@ void	start_thread(t_philo *philo)
 	}
 	free(philo->rules);
 	free(philo);
+	kill_sem(philo);
 }
 
 int	main(int argc, char **argv)

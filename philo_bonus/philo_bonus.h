@@ -28,6 +28,7 @@ typedef struct s_philo
     int id;
     long last_time_eat;
     pthread_t th;
+    pthread_t th_odd;
     t_rules *rules;
 } t_philo;
 

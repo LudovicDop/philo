@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:30:45 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/27 16:47:38 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 11:56:55 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void    start_thread(t_philo *philo)
 {
     int i;
-    int j;
+    //int j;
 
-    j = 0;
+    //j = 0;
     i = 0;
-    while (j < philo->rules->how_many_dinner || philo->rules->how_many_dinner == -1 && philo->rules->someone_die != 1)
-    {
+    //while (j < philo->rules->how_many_dinner || philo->rules->how_many_dinner == -1 && philo->rules->someone_die != 1)
+    //{
         //printf("NEW\n");
         i = 0;
         while (i < philo->rules->nbre_of_philo)
@@ -35,8 +35,8 @@ void    start_thread(t_philo *philo)
             pthread_join(philo[i].th, NULL);
             i++;
         }
-        j++;  
-    }
+        //j++;  
+    //}
     printf("END\n");
 }
 int main(int argc, char **argv)

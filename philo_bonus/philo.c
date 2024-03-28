@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:52:50 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 12:25:35 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:50:12 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	philosophers(void *arg)
 	neg = -1;
 	j = 0;
 	philo = arg;
+	if (only_one(philo))
+		return (2);
 	while (j < philo->rules->how_many_dinner
 		|| philo->rules->how_many_dinner == neg)
 	{

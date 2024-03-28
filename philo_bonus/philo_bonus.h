@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:19:07 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 12:40:42 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:50:07 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ int				philosophers(void *arg);
 int				ft_usleep(long long milliseconds, t_philo *philo);
 long int		get_current_time(void);
 int				check_die(t_philo *philo);
+int				only_one(t_philo *philo);
+int				ft_printf(t_philo *philo, char *string, long long sleep);
 int				ft_atoi(const char *str);
 #endif

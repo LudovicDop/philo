@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:59:33 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 12:37:28 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:48:49 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,17 @@ int	check_die(t_philo *philo)
 		return (2);
 	}
 	sem_post(&philo->rules->die);
+	return (0);
+}
+
+int	only_one(t_philo *philo)
+{
+	if (philo->rules->nbre_of_philo == 1)
+	{
+		ft_printf(philo, "has taken a fork", 0);
+		printf("%ld %d died\n", get_current_time() - philo->rules->start_time,
+			philo->id);
+		return (2);
+	}
 	return (0);
 }

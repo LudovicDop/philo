@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:41:20 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 12:27:41 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:41:17 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	check_my_args(char **argv, int argc)
 			i++;
 		}
 	}
+	if (ft_atoi(argv[0]) <= 0)
+		return (2);
 	return (0);
 }
 

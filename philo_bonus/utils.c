@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:41:20 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/27 14:59:37 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:27:41 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,8 @@ int	ft_usleep(long long milliseconds, t_philo *philo)
 
 	start = get_current_time();
 	while ((get_current_time() - start) < milliseconds)
-	{ 
+	{
 		usleep(500);
 	}
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 12:30:45 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/28 14:38:19 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:35:54 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ void	start_thread(t_philo *philo)
 	while (i < philo->rules->nbre_of_philo)
 	{
 		philo[i].id = i + 1;
-		pthread_create(&philo[i].th, NULL, (void *)&philosophers, &philo[i]);
+		if (pthread_create(&philo[i].th, NULL, (void *)&philosophers,
+				&philo[i]) != 0)
+			return (free(philo->rules), free(philo), exit(EXIT_FAILURE));
 		i++;
 	}
 	i = 0;
 	while (i < philo->rules->nbre_of_philo)
 	{
-		pthread_join(philo[i].th, NULL);
+		if (pthread_join(philo[i].th, NULL) != 0)
+			return (free(philo->rules), free(philo), exit(EXIT_FAILURE));
 		i++;
 	}
 	free(philo->rules);

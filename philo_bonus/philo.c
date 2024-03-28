@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:52:50 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 07:15:37 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 10:28:44 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,12 @@ int    is_eating(t_philo *philo)
 }
 int    is_sleeping(t_philo *philo)
 {
-    int ret;
-    
-    ret = 0;
-    ret = ft_printf(philo, "is sleeping", philo->rules->time_to_sleep);
-    return (ret);
+    return (ft_printf(philo, "is sleeping", philo->rules->time_to_sleep));
 }
 
 int    is_thinking(t_philo *philo)
 {
-    int ret;
-
-    ret = 0;
-    ret = ft_printf(philo, "is thinking", 0);
-    return (ret);
+    return (ft_printf(philo, "is thinking", 0));
 }
 
 int    philosophers(void *arg)
@@ -81,8 +73,9 @@ int    philosophers(void *arg)
     t_philo *philo;
 
     philo = arg;
-    if (philo->id % 2 == 0 || philo->id == philo->rules->nbre_of_philo)
+    if (philo->id >  philo->rules->nbre_of_philo / 2)
     {
+        //printf("id : %d | total : %d\n", philo->id, philo->rules->nbre_of_philo / 2);
         usleep(500);
         //sem_wait(&philo->rules->odd);  
     }

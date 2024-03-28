@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:31:12 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 12:12:27 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 14:14:31 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,21 @@ int	ft_printf(char *str, long long milisec, t_philo *tmp, long long sleep)
 {
 	if (check_die(tmp))
 		return (1);
-	printf("%lld %d %s\n", milisec, tmp->id, str);
-	ft_usleep(sleep);
+	if (get_current_time() - tmp->last_eat + sleep < tmp->rules->time_to_die)
+	{
+		printf("%lld %d %s\n", milisec, tmp->id, str);
+		ft_usleep(sleep);
+	}
+	else
+	{
+		pthread_mutex_lock(&tmp->rules->die);
+		tmp->rules->someone_die = 1;
+		ft_usleep(tmp->rules->time_to_die);
+		printf("%lld %d %s\n", milisec, tmp->id, str);
+		printf("%lld %d died\n", get_time(tmp->tab->global), tmp->id);
+		pthread_mutex_unlock(&tmp->rules->die);
+		return (1);
+	}
 	if (check_die(tmp) && !tmp->rules->someone_die)
 		return (1);
 	return (0);

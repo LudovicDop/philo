@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/26 18:58:22 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:08:02 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,28 @@ int	i_m_thinking_about_my_fucking_life(t_philo *tmp)
 int	philosophers(void *arg)
 {
 	t_philo	*tmp;
+	int		j;
 
+	j = 0;
 	tmp = (t_philo *)arg;
-	if ((tmp->id % 2 == 0) || tmp->id == tmp->tab->fork)
-		usleep(500);
-	if (tmp->tab->fork == 1)
+	while (j < tmp->rules->nbre_philo || tmp->tab->argc == 5)
 	{
-		ft_printf("has taken a fork", get_time(tmp->tab->global_time), tmp, 0);
-		tmp->rules->someone_die = 1;
-		printf("%lld %d died\n", get_time(tmp->tab->global_time), tmp->id);
-		return (1);
+		if ((tmp->id % 2 == 0) || tmp->id == tmp->tab->fork)
+			usleep(500);
+		if (tmp->tab->fork == 1)
+		{
+			ft_printf("has taken a fork", get_time(tmp->tab->global_time), tmp, 0);
+			tmp->rules->someone_die = 1;
+			printf("%lld %d died\n", get_time(tmp->tab->global_time), tmp->id);
+			return (1);
+		}
+		if (i_m_eating(tmp))
+			return (1);
+		if (i_m_sleeping(tmp))
+			return (1);
+		if (i_m_thinking_about_my_fucking_life(tmp))
+			return (1);
+		j++;
 	}
-	if (i_m_eating(tmp))
-		return (1);
-	if (i_m_sleeping(tmp))
-		return (1);
-	if (i_m_thinking_about_my_fucking_life(tmp))
-		return (1);
 	return (0);
 }

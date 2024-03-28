@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:52:50 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 11:59:53 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:04:02 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int    philosophers(void *arg)
 
     j = 0;
     philo = arg;
-    while (j < philo->rules->how_many_dinner)
+    while (j < philo->rules->how_many_dinner || philo->rules->how_many_dinner == -1)
     {
         if (philo->id >  philo->rules->nbre_of_philo / 2)
             usleep(500);

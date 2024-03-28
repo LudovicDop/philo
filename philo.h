@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 12:01:17 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 12:26:21 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:04:56 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ void				ft_end(t_philo *tmp);
 int					check_die(t_philo *philo);
 int					ft_printf(char *str, long long milisec, t_philo *tmp,
 						long long sleep);
+int					check_max(char **argv, int argc);
 long int			get_current_time(void);
 #endif

@@ -6,11 +6,25 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:31:12 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 14:31:02 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:04:46 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	check_max(char **argv, int argc)
+{
+	int	i;
+
+	i = 0;
+	while (i < argc - 1)
+	{
+		if (ft_atoi(argv[i]) == -1)
+			return (2);
+		i++;
+	}
+	return (0);
+}
 
 long long	get_time(long long startTime)
 {

@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:19:07 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 12:50:07 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 14:36:23 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <semaphore.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <limits.h>
 # include <sys/time.h>
 # include <time.h>
 # include <unistd.h>

@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:17:06 by ludovicdopp       #+#    #+#             */
-/*   Updated: 2024/03/28 12:10:32 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:04:29 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	check_my_args(char **argv, int argc)
 {
-	int	i;
-	int	j;
+	int				i;
+	int				j;
+	long long int	value;
 
+	value = 0;
 	j = 0;
 	i = 0;
 	while (i < argc - 1)
@@ -33,6 +35,8 @@ int	check_my_args(char **argv, int argc)
 			i++;
 		}
 	}
+	if (check_max(argv, argc))
+		return (2);
 	return (0);
 }
 

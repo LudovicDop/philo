@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:41:20 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 12:41:17 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 14:54:26 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	check_my_args(char **argv, int argc)
 {
 	int	i;
 	int	j;
+	long long value;
 
+	value = 0;
 	j = 0;
 	i = 0;
 	while (i < argc - 1)
@@ -47,7 +49,7 @@ int	ft_atoi(const char *str)
 	is_neg = 1;
 	i = 0;
 	ret = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ' && i < 31)
 		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
@@ -55,7 +57,7 @@ int	ft_atoi(const char *str)
 			is_neg = is_neg * -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9' && i < 31)
 	{
 		ret = (ret * 10) + str[i] - '0';
 		i++;

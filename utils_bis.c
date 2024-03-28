@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 18:54:26 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/26 18:55:07 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:07:30 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,27 +47,29 @@ void	ft_end(t_philo *tmp)
 
 int	ft_atoi(const char *str)
 {
-	int	ret;
-	int	i;
-	int	is_neg;
+	long long	ret;
+	int			i;
+	int			is_neg;
 
 	is_neg = 1;
 	i = 0;
 	ret = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+	while (((str[i] >= 9 && str[i] <= 13) || str[i] == ' ') && i < 31)
 		i++;
-	if (str[i] == '+' || str[i] == '-')
+	if (str[i] == '+' || str[i] == '-' && i < 31)
 	{
 		if (str[i] == '-')
 			is_neg = is_neg * -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9' && i < 31)
 	{
 		ret = (ret * 10) + str[i] - '0';
 		i++;
 	}
-	return (ret * is_neg);
+	if (ret >= INT_MAX || i >= 31)
+		return (-1);
+	return ((int)ret * is_neg);
 }
 
 long int	get_current_time(void)

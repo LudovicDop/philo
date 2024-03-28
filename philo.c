@@ -6,7 +6,7 @@
 /*   By: ldoppler <ldoppler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:47:22 by ldoppler          #+#    #+#             */
-/*   Updated: 2024/03/28 14:31:13 by ldoppler         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:06:55 by ldoppler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	philosophers(void *arg)
 		if (tmp->tab->fork == 1)
 		{
 			ft_printf("has taken a fork", get_time(tmp->tab->global), tmp, 0);
-			tmp->rules->someone_die = 1;
 			ft_usleep(tmp->rules->time_to_die);
 			printf("%lld %d died\n", get_time(tmp->tab->global), tmp->id);
 			return (1);
